@@ -20,3 +20,9 @@ This is a project to open a ticket in jira when a value has some time to appear 
 ```bash
 npm run start
 ```
+
+### How to run in docker
+
+```bash
+npm run docker
+```
