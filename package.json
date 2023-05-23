@@ -1,0 +1,16 @@
+{
+  "name": "alerts_influxdb_2_jira",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@influxdata/influxdb-client": "^1.33.2",
+    "dotenv": "^16.0.3",
+    "moment": "^2.29.4"
+  }
+}
