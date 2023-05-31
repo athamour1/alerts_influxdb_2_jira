@@ -15,6 +15,7 @@ const jiraSiteAuth = process.env.JIRA_SITE_AUTH || '';
 const jiraSiteProject = process.env.JIRA_SITE_PROJECT || '';
 const jiraSiteIssuetype = process.env.JIRA_ISSUE_TYPE || '';
 
+const checkInterval = process.env.CHECK_INTERVAL || 5000;
 
 const queryApi = new InfluxDB({ url, token }).getQueryApi(org);
 
@@ -71,11 +72,11 @@ const getLastValue = async (query) => {
 };
 
 const executeQueries = async () => {
-    for (const { name, query } of queries) {
+    for (const { name, query, timeLimit } of queries) {
         getLastValue(query)
             .then((lastValue) => {
                 const now = new Date();
-                const twelveHoursAgo = new Date(now.getTime() - 12 * 60 * 60 * 1000);
+                const twelveHoursAgo = new Date(now.getTime() - timeLimit);
                 const lastValueTimestamp = new Date(Date.parse(lastValue));
 
                 if (lastValueTimestamp < twelveHoursAgo) {
@@ -100,4 +101,4 @@ setInterval(() => {
         .catch((error) => {
             console.error('Error executing queries:', error);
         });
-}, 5 * 1000);
+}, checkInterval);
