@@ -6,9 +6,11 @@ This is a project to open a ticket in jira when a value has some time to appear 
 
 ### Prerequisites
 
-| Node | v18.15.0 |
-|------|----------|
-| NPM  | 9.5.0    |
+| Technology | Version  |
+|------------|----------|
+| NPM        | 9.5.0    |
+| Node       | v18.15.0 |
+| Docker     | v24.0.7  |
 
 ### Before starting
 
